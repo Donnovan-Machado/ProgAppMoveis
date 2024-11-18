@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         database.execSQL("CREATE TABLE IF NOT EXISTS pessoas (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, email TEXT, dtnsc DATE)");
 
         carregarListagem();
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     public void carregarListagem() {
         Cursor cursor = database.rawQuery("SELECT * FROM pessoas", null);
         cursor.moveToFirst();
@@ -98,11 +96,9 @@ public class MainActivity extends AppCompatActivity {
             cursor.moveToNext();
         }
         cursor.close();
-
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, nomes);
         listView.setAdapter(adapter);
     }
-
     private void limparCampos() {
         editTextNome.setText("");
         editTextEmail.setText("");
